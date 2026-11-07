@@ -17,24 +17,27 @@ def gradients(w, b, x, y):
 def loss(w, b, x, y):
     return np.mean((w * x + b - y) ** 2)
 
-def train(x, y, steps = 100, lr = 0.05):
+def train(x, y, steps = 101, lr = 0.05):
     w = 0.0
     b = 0.0
     losses = []
     for step in range(steps):
         losses.append(loss(w, b, x, y))
         if step % 20 == 0:
-            print(step, w, b, loss(w, b, x, y))
+            print(f"{step:5d} {w:8.4f} {b:8.4f} {loss(w, b, x, y):10.6f}")
         dw, db = gradients(w, b, x, y)
         w -= lr * dw
         b -= lr * db
         
     return w, b, losses
 
+print(f"{'step':>5} {'w':>8} {'b':>8} {'loss':>10}")
+print("-" * 34)
+
 if __name__ == "__main__":
     x, y = make_data()
     w, b, losses = train(x, y)
-    print("\n",w, b, losses[-1])
+    xs = np.array([-5, 5])
 
     plt.figure()
     plt.plot(losses)
@@ -48,7 +51,7 @@ if __name__ == "__main__":
 
     plt.figure()
     plt.scatter(x, y, s=12, alpha=0.5, label="data")
-    plt.plot(x, w * x + b, color="red", linewidth=2, label=f"fit: y = {w:.2f}x + {b:.2f}")
+    plt.plot(xs, w * xs + b, color="red", linewidth=2, label=f"fit: y = {w:.2f}x + {b:.2f}")
     plt.xlabel("x axis")
     plt.ylabel("y axis")
     plt.title("Linear regression fit")

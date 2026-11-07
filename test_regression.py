@@ -17,13 +17,13 @@ def test_gradients():
 
 
 
-    assert np.isclose(dw_numeric, dw_analytic, rtol=1e-4, atol=1e-6)
-    assert np.isclose(db_numeric, db_analytic, rtol=1e-4, atol=1e-6)
+    assert np.isclose(dw_numeric, dw_analytic, rtol=1e-6)
+    assert np.isclose(db_numeric, db_analytic, rtol=1e-6)
 
 def test_training_matches_polyfit():
     x, y = make_data()
     w, b = np.polyfit(x, y, 1)
     w_train, b_train, _ = train(x, y, steps=1000, lr=0.05)
 
-    assert np.isclose(w_train, w, rtol=1e-6, atol=1e-2)
-    assert np.isclose(b_train, b, rtol=1e-6, atol=1e-2)
+    assert np.isclose(w_train, w, rtol=1e-6)
+    assert np.isclose(b_train, b, rtol=1e-6)
