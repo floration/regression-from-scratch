@@ -18,6 +18,8 @@ def loss(w, b, x, y):
     return np.mean((w * x + b - y) ** 2)
 
 def train(x, y, steps = 101, lr = 0.05):
+    print(f"{'step':>5} {'w':>8} {'b':>8} {'loss':>10}")
+    print("-" * 34)
     w = 0.0
     b = 0.0
     losses = []
@@ -31,8 +33,7 @@ def train(x, y, steps = 101, lr = 0.05):
         
     return w, b, losses
 
-print(f"{'step':>5} {'w':>8} {'b':>8} {'loss':>10}")
-print("-" * 34)
+
 
 if __name__ == "__main__":
     x, y = make_data()
