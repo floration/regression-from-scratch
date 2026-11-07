@@ -23,7 +23,7 @@ def train(x, y, steps = 100, lr = 0.05):
     losses = []
     for step in range(steps):
         losses.append(loss(w, b, x, y))
-        if step % 10 == 0:
+        if step % 20 == 0:
             print(step, w, b, loss(w, b, x, y))
         dw, db = gradients(w, b, x, y)
         w -= lr * dw
@@ -35,17 +35,23 @@ if __name__ == "__main__":
     x, y = make_data()
     w, b, losses = train(x, y)
     print("\n",w, b, losses[-1])
-    plt.figure()                 # start a new, blank picture
-    plt.plot(losses)     # one list → a line, x = 0, 1, 2, … automatically
+
+    plt.figure()
+    plt.plot(losses)
     plt.yscale("log")
-    plt.xlabel("step")           # axis labels
+    plt.xlabel("step")
     plt.ylabel("loss")
-    plt.savefig("loss.png")   # write it to a file
-    plt.close()                  # finish this picture before starting the next one
+    plt.title("Training loss")
+    plt.legend(["loss"])
+    plt.savefig("loss.png")
+    plt.close()
+
     plt.figure()
     plt.scatter(x, y, s=12, alpha=0.5, label="data")
     plt.plot(x, w * x + b, color="red", linewidth=2, label=f"fit: y = {w:.2f}x + {b:.2f}")
-    plt.xlabel("x")           # axis labels
-    plt.ylabel("y")
+    plt.xlabel("x axis")
+    plt.ylabel("y axis")
+    plt.title("Linear regression fit")
+    plt.legend()
     plt.savefig("fit.png")
     plt.close()

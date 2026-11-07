@@ -1,7 +1,7 @@
 [project]
 name = "regression-from-scratch"
 version = "0.1.0"
-description = "Add your description here"
+description = "Hand made gradient descent regression in raw numpy"
 readme = "README.md"
 authors = [
     { name = "floration", email = "338612073+floration@users.noreply.github.com" }
