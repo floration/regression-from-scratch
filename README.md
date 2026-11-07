@@ -25,5 +25,5 @@ $ uv run pytest
 
 # What I Learned:
 Matplot graphing and images
-Gradient exploding
-Scalar noise adds a loss floor
+Gradients 
+Real noise with spread 1 has a loss of about 1
